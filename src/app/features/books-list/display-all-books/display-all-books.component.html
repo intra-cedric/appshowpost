@@ -1,0 +1,15 @@
+<h2>{{currentPageTitle}}</h2>
+<div class="container">
+  <div class="col-md-3">
+<ul>
+  <li *ngFor="let book of _listBooks; index as bookId" >
+
+      <h3>{{book.title || uppercase}}  </h3>
+      <img src="https://fakeimg.pl/250x100/">
+      <p><a [title]="book.title + ' details'" [routerLink]="['/book', bookId]" fragment="books">click to show routing </a></p>
+
+      <app-display-details-book [bookselected]="book" (modifyBook)="onModify()"></app-display-details-book>
+  </li>
+</ul>
+</div>
+</div> 

@@ -1,0 +1,18 @@
+
+<div *ngIf="bookselected">
+    <button (click)="showBookDetail(bookselected.id)">  Show Details  </button> 
+</div>
+
+<div *ngIf="bookDetail">
+  <div *ngFor="let itemBook of bookDetail">
+    <p>Titre : {{ itemBook.title }}</p>
+    <p>Description : {{ itemBook.body }}</p>
+    <p>Id du livre : {{ itemBook.id }}</p>
+
+      <button (click)="editBook()">Modify Me</button>
+      <button (click)="createBook()">Create a new</button>
+      
+  </div>
+  <app-modify-details-book [booktomodify]="bookDetail" [mode]="statusmode" *ngIf="editStatus || createStatus" 
+                            (isBookModified)="onModifiedBook($event)" (isBookCreated)="onCreatedBook($event)"></app-modify-details-book>
+</div>
